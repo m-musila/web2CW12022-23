@@ -1,9 +1,10 @@
-const { response } = require("express");
+const { response, request } = require("express");
 const goalDAO = require("../models/models.js");
 
 // Create an instance of goals
 // const db = new goalDAO();
 // During development its best to used in-memory db
+// const promise = require("../models/models");
 const db = new goalDAO("database/goals.db");
 
 exports.sign_in = (req, res) => {
@@ -33,7 +34,10 @@ exports.post_goals = (req, res) => {
   db.addGoal(req.body.date, req.body.category, req.body.goal);
   res.redirect("/schedule");
 };
-
+// promise.schedules().then((list) => {
+//   // const newList = list.sort((a, b) => a.time - b.time);
+//   console.log("Print list", list);
+// });
 exports.schedule = (req, res) => {
   db.getSchedule()
     .then((list) => {
@@ -46,6 +50,38 @@ exports.schedule = (req, res) => {
     })
     .catch((err) => {
       console.log("promise rejected", err);
+    });
+};
+
+exports.show_by_category = (req, res) => {
+  console.log("filtering schedule by", req.params.category);
+
+  let category = req.params.category;
+  db.getScheduleByCategory(category)
+    .then((schedule) => {
+      res.render("schedule", {
+        title: "Goal Schedule",
+        schedule: schedule,
+      });
+    })
+    .catch((err) => {
+      console.log("error handling schedule posts", err);
+    });
+};
+
+exports.remove = (req, res) => {
+  console.log("filtering remove by", req.params.date);
+
+  let date = req.params.date;
+  db.delete(date)
+    .then((schedule) => {
+      res.render("schedule", {
+        title: "Goal Schedule",
+        schedule: schedule,
+      });
+    })
+    .catch((err) => {
+      console.log("error handling author posts", err);
     });
 };
 

@@ -13,6 +13,8 @@ router.get("/goals", controller.goals);
 router.post("/goals", controller.post_goals);
 router.get("/schedule", controller.schedule);
 router.get("/about", controller.about_page);
+router.get("/posts/:category", controller.show_by_category);
+router.get("/posts/:date", controller.remove);
 router.use(controller.notFound);
 router.use(controller.serverError);
 
