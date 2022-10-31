@@ -121,6 +121,3 @@ class Wellness {
 
 // Make the module visible outside.
 module.exports = Wellness;
-// module.exports = {
-//   schedules: schedules,
-// };

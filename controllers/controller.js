@@ -34,10 +34,10 @@ exports.post_goals = (req, res) => {
   db.addGoal(req.body.date, req.body.category, req.body.goal);
   res.redirect("/schedule");
 };
-// promise.schedules().then((list) => {
-//   // const newList = list.sort((a, b) => a.time - b.time);
-//   console.log("Print list", list);
-// });
+promise.schedules().then((list) => {
+  // const newList = list.sort((a, b) => a.time - b.time);
+  console.log("Print list", list);
+});
 exports.schedule = (req, res) => {
   db.getSchedule()
     .then((list) => {
