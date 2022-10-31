@@ -1,0 +1,38 @@
+<html>
+  <head>
+  {{>header}}
+  </head>
+  <body class="text-center"> 
+    <main class="form-signin w-100 m-auto">
+     <form method="post" role="form">
+  <!-- Name input -->
+  <div class="form-outline mb-4">
+  <label class="form-label" for="date">Date</label>
+  <input type="date" id="date" name="date" required autofocus>  
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">  
+  <label for="category">Choose category:</label>
+    <select id="category" name="category">
+      <option value="fitness" selected>fitness</option>
+      <option value="nutrition">nutrition</option>
+      <option value="mental">mental</option>
+      <option value="health">health</option>
+    </select>
+  </div>
+
+  <!-- Message input -->
+  <div class="form-outline mb-4">
+   <label class="form-label" for="goal">Enter goal</label>
+    <textarea class="form-control" id="goal" name="goal" rows="2" required></textarea>
+   
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" value="Post entry" class="btn btn-primary btn-block mb-4">Submit</button>
+</form> 
+    </main>   
+  </body>
+</html>
+

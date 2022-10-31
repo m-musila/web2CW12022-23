@@ -1,0 +1,32 @@
+{{! Always restart app to add mustache views}}
+<html>
+    <head>
+        {{>header}}
+    </head>
+    <body>
+      <h1>Weekly Schedule</h1> 
+      
+      {{! Looping array of entries with key 'entries' }}
+      <div class="container">
+      <div class="row">
+      {{#schedule}}
+      
+      
+        <div class="col-lg-3">
+            <h1>{{day}}</h1>
+            <h2>{{date}}</h2>
+            <div>{{category}}, goal{{goal}}</div>
+            
+        </div>
+       
+       
+      {{/schedule}}
+      </div> 
+      </div> 
+
+      {{! Inverted list when there no entries}}
+      {{^schedule}}
+        No entries yet.
+      {{/schedule}}
+    </body>
+</html>
