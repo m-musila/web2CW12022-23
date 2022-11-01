@@ -17,10 +17,22 @@ exports.sign_up = (req, res) => {
   });
 };
 
-// Set goals
+// render goals
 exports.goals = (req, res) => {
   res.render("goals", {
     title: "Wellness Goals",
+  });
+};
+
+exports.update = (req, res) => {
+  res.render("update", {
+    title: "Update Goal",
+  });
+};
+
+exports.remove = (req, res) => {
+  res.render("remove", {
+    title: "Remove Goal",
   });
 };
 
@@ -30,6 +42,24 @@ exports.post_goals = (req, res) => {
     return;
   }
   db.addGoal(req.body.date, req.body.category, req.body.goal);
+  res.redirect("/schedule");
+};
+
+exports.post_update = (req, res) => {
+  if (!req.body.date) {
+    response.status(400).send("Provide dates for each entry");
+    return;
+  }
+  db.updateGoal(req.body.date, req.body.category, req.body.goal);
+  res.redirect("/schedule");
+};
+
+exports.post_remove = (req, res) => {
+  if (!req.body.date) {
+    response.status(400).send("Provide dates for each entry");
+    return;
+  }
+  db.removeGoal(req.body.date, req.body.category);
   res.redirect("/schedule");
 };
 
@@ -50,37 +80,20 @@ exports.schedule = async (req, res) => {
     });
 };
 
-exports.show_by_category = (req, res) => {
+exports.show_by_category = async (req, res) => {
   console.log("filtering schedule by", req.params.category);
 
   let category = req.params.category;
   db.getScheduleByCategory(category)
     .then((schedule) => {
       res.render("schedule", {
-        title: "Goal Schedule",
+        title: `${category} Goals`,
         schedule: schedule,
       });
       console.log("The promise resolved");
     })
     .catch((err) => {
       console.log("Error handling schedule promise", err);
-    });
-};
-
-exports.remove = (req, res) => {
-  console.log("filtering remove by", req.params.date);
-
-  let date = req.params.date;
-  db.delete(date)
-    .then((schedule) => {
-      res.render("schedule", {
-        title: "Goal Schedule",
-        schedule: schedule,
-      });
-      console.log("The promise resolved");
-    })
-    .catch((err) => {
-      console.log("Error handling author posts", err);
     });
 };
 

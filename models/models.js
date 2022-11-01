@@ -1,5 +1,6 @@
 // Implement the store
 const nedb = require("nedb");
+const { resolve } = require("path");
 
 // Data model class to implement functionality for data processing.
 class Wellness {
@@ -36,9 +37,9 @@ class Wellness {
     console.log("Goal created");
     this.db.insert(goals, (err, doc) => {
       if (err) {
-        console.log("Error inserting document", err);
+        console.log(`Error inserting document: ${err}`);
       } else {
-        console.log("Goal was added successfully", doc);
+        console.log(`Goal was added successfully: ${doc}`);
       }
     });
   };
@@ -53,7 +54,7 @@ class Wellness {
           reject(err);
         } else {
           resolve(schedule);
-          console.log("Returned the all schedule: ", schedule);
+          console.log(`Returned the all schedule: ${schedule}`);
         }
       });
     });
@@ -67,24 +68,50 @@ class Wellness {
           reject(err);
         } else {
           resolve(schedule);
-          console.log("Get schedule by category: ", schedule);
+          console.log(`Get schedule by category:${schedule}`);
         }
       });
     });
   };
-  //   remove(date) {
-  //     new Promise((resolve, reject) => {
-  //       this.db.remove({ date: date }, {}, (err, numRemoved) => {
-  //         if (err) {
-  //           reject(err);
-  //         } else {
-  //           resolve(numRemoved);
-  //           console.log("getEntriesByUser returns: ", numRemoved);
-  //           return {};
-  //         }
-  //       });
-  //     });
-  //   }
+
+  // Update a goal
+  updateGoal = (date, category, goal) => {
+    return new Promise((resolve, reject) => {
+      this.db.update(
+        { date: date, category: category },
+        { $set: { goal: goal } },
+        { multi: true },
+        (err, numReplaced) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(numReplaced);
+            console.log(
+              `Get schedule by category, number replaced:${numReplaced}`
+            );
+          }
+        }
+      );
+    });
+  };
+
+  // Remove a goal
+  removeGoal = (date, category) => {
+    return new Promise((resolve, reject) => {
+      this.db.remove(
+        { date: date, category: category },
+        {},
+        (err, numRemoved) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(numRemoved);
+            console.log(`Number deleted :${numRemoved}`);
+          }
+        }
+      );
+    });
+  };
 }
 
 // Make the module visible outside.
