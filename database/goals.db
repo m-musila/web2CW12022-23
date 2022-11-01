@@ -7,6 +7,6 @@
 {"time":1667347200000,"day":"Wednesday","date":"2022-11-02","category":"fitness","goal":"fsdf","_id":"A0oinWZNLZpiovYs"}
 {"time":1667347200000,"day":"Wednesday","date":"2022-11-02","category":"fitness","goal":"sd","_id":"M5t3Q3YGS6Fbt1cx"}
 {"time":1667347200000,"day":"Wednesday","date":"2022-11-02","category":"fitness","goal":"sds","_id":"dA6MqMyfG1wL1Lu4"}
-{"time":1667606400000,"day":"Saturday","date":"2022-11-05","category":"health","goal":"Eat less","_id":"n8G58FdXnxGzWGEt"}
-{"time":1667606400000,"day":"Saturday","date":"2022-11-05","category":"health","goal":"excise more","_id":"n8G58FdXnxGzWGEt"}
-{"$$deleted":true,"_id":"n8G58FdXnxGzWGEt"}
+{"time":1667606400000,"day":"Saturday","date":"2022-11-05","category":"nutrition","goal":"Eat everyday","_id":"DEERpj5DfQ4vtUSp"}
+{"time":1667606400000,"day":"Saturday","date":"2022-11-05","category":"nutrition","goal":"Never eat","_id":"DEERpj5DfQ4vtUSp"}
+{"$$deleted":true,"_id":"DEERpj5DfQ4vtUSp"}
