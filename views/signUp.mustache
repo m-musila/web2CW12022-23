@@ -2,19 +2,21 @@
   <head>
   {{>header}}
   </head>
-  <body class="text-center"> 
-    <main class="form-signin w-100 m-auto">
+  <body class="text-center "> 
+    <main class="form-signin w-100 m-auto border border-secondary border-2 rounded">
       <form method="post">
-        <img class="mb-4 dogImg" src="images/pexels-alexandru-rotariu-733416.jpg" alt="" width="112" height="97">
+        <img class="mb-4 dogImg" src="images/sign.png" alt="" width="100" height="100">
+        <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
 
-        <h1 class="h3 mb-3 fw-normal">Newsletter Sign Up!</h1>
+        <input type="text" class="form-control top"  name="firstName" placeholder="First Name" required autofocus>
+        <input type="text" class="form-control middle"  name="secondName" placeholder="Second Name" required>
+        <input type="email" class="form-control middle"  name="email" placeholder="Email" required>
+        <input type="password"  class="form-control middle" id="password" name="password" placeholder="Password" required>
+        <input type="password"  class="form-control bottom" id="password" name="password" placeholder="Re-password" required>
 
-        <input type="text" class="form-control top"  name="firstName" placeholder="First Name" autofocus>
-        <input type="text" class="form-control middle"  name="secondName" placeholder="Second Name">
-        <input type="email" class="form-control bottom"  name="email" placeholder="Email">
- 
-        <button class="w-100 btn btn-primary" type="submit">Sign Me Up</button>
-        <p class="mt-5 mb-3 text-muted">&copy; mmusila 2022</p>
+        <button class="w-100 btn btn-primary" type="submit">Sign Up</button>
+        <div class="text-right p-3"><a href="/">Click to sign in</a></div>
+       <p class="mt-5 mb-3 text-muted">&copy; Agb Ltd 2022 -2023</p>
       </form>
     </main>   
   </body>

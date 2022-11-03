@@ -3,7 +3,7 @@ const { response, request } = require("express");
 const goalDAO = require("../models/models.js");
 
 // Create an instance of goals
-const db = new goalDAO("database/goals.db");
+const db = new goalDAO("database/goal.db");
 
 exports.sign_in = (req, res) => {
   res.render("signIn", {

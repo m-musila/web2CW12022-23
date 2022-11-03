@@ -3,16 +3,16 @@
     <head>
         {{>header}}
     </head>
-    <body>
+    <body class="m-5">
     <main class="w-500 m-auto">
       <h1 class="text-center p-4">Weekly Schedule</h1> 
       
       {{! Looping array of entries with key 'entries' }}
-      <div class="container">
+      {{! <div class="container"> }}
       <div class="row border border-secondary">
       {{#schedule}}
         <div class="col-lg-3 border border-secondary">
-          <div> <h2 class="d-inline">{{day}}</h2> <a href="/posts/{{category}}" class="btn btn-primary btn-sm active d-inline float-end" role="button" aria-pressed="true">{{category}}</a>
+          <div> <h2 class="d-inline">{{day}}</h2> <a href="/posts/{{category}}" class="btn btn-outline-primary btn-sm active d-inline float-end m-2" role="button" aria-pressed="true">{{category}}</a>
           </div> 
             <p>{{date}}</p>
             <span> Goal:  <h5 class="d-inline">{{goal}}</h5> </span> 
@@ -23,11 +23,11 @@
         No entries yet.
       {{/schedule}}
       </div> 
-      </div> 
+      {{! </div>  }}
       
       <div class="text-right text-center p-4">
-      <a href="/update" class="btn btn-outline-warning float-start">Update Goal</a>
-      <a href="/remove" class="btn btn-outline-danger float-end">Remove Goal</a>
+      <a href="/update" class="btn btn-warning float-start">Update Goal</a>
+      <a href="/remove" class="btn btn-danger float-end">Remove Goal</a>
       </div>
       </main> 
       
