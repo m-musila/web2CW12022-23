@@ -1,37 +1,46 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
   color: #5a5a5a;
+  font-family: "Public Sans", sans-serif;
 }
 
-/* CUSTOMIZE THE CAROUSEL
-  -------------------------------------------------- */
+ul {
+  list-style-type: none;
+  /* text-decoration: none; */
+}
+a {
+  text-decoration: none;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgb(40, 38, 38);
+}
 
-/* Carousel base class */
-.carousel {
-  margin-bottom: 4rem;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
+.nav-link {
+  display: flex;
+  gap: 9rem;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 32rem;
-  background-color: #777;
-}
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
+a.nav-a {
+  color: white;
 }
 
 /* MARKETING CONTENT

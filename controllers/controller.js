@@ -37,19 +37,11 @@ exports.remove = (req, res) => {
 };
 
 exports.post_goals = (req, res) => {
-  if (!req.body.date) {
-    response.status(400).send("Provide dates for each entry");
-    return;
-  }
   db.addGoal(req.body.date, req.body.category, req.body.goal);
   res.redirect("/schedule");
 };
 
 exports.post_update = (req, res) => {
-  if (!req.body.date) {
-    response.status(400).send("Provide dates for each entry");
-    return;
-  }
   db.updateGoal(req.body.date, req.body.category, req.body.goal);
   res.redirect("/schedule");
 };
@@ -65,36 +57,29 @@ exports.post_remove = (req, res) => {
 
 // async used for functions handling promises (to simplify the syntax necessary to consume promises)
 exports.schedule = async (req, res) => {
-  db.getSchedule()
-    .then((list) => {
-      // Sort goals using {time} so that weekdays are always in order
-      const newList = list.sort((a, b) => a.time - b.time);
-      res.render("schedule", {
-        title: "Goal Schedule",
-        schedule: newList,
-      });
-      console.log("The promise resolved");
-    })
-    .catch((err) => {
-      console.log("The promise rejected", err);
-    });
+  const goals = await db.getSchedule().catch((err) => {
+    console.log("Error handling schedule promise", err);
+  });
+  const schedule = await goals.sort((a, b) => a.time - b.time);
+  res.render("schedule", {
+    title: "Goal Schedule",
+    schedule: schedule,
+  });
+  console.log("The promise resolved");
 };
 
 exports.show_by_category = async (req, res) => {
   console.log("filtering schedule by", req.params.category);
 
   let category = req.params.category;
-  db.getScheduleByCategory(category)
-    .then((schedule) => {
-      res.render("schedule", {
-        title: `${category} Goals`,
-        schedule: schedule,
-      });
-      console.log("The promise resolved");
-    })
-    .catch((err) => {
-      console.log("Error handling schedule promise", err);
-    });
+  const schedule = await db.getScheduleByCategory(category).catch((err) => {
+    console.log("Error handling schedule promise", err);
+  });
+  res.render("schedule", {
+    title: `${category} Goals`,
+    schedule: schedule,
+  });
+  console.log("The promise resolved");
 };
 
 exports.about_page = (req, res) => {
