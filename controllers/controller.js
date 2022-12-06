@@ -1,9 +1,11 @@
 const { response, request } = require("express");
 //Import model functionality
 const goalDAO = require("../models/models.js");
+const userDao = require("../models/user.js");
 
 // Create an instance of goals
 const db = new goalDAO("database/goal.db");
+const userDB = new goalDAO("database/user.db");
 
 exports.sign_in = (req, res) => {
   res.render("signIn", {
@@ -82,6 +84,37 @@ exports.show_by_category = async (req, res) => {
   console.log("The promise resolved");
 };
 
+exports.post_sign_up = (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  if (!email || !password) {
+    res.status(404);
+    res.render("notFound", {
+      title: "Error 404",
+    });
+    return;
+  }
+  userDao.userLookup(email, function (err, e) {
+    if (e) {
+      res.status(500);
+      res.render("serverError", {
+        title: "Error 500",
+      });
+      return;
+    }
+    userDao.addUser(email, password);
+    console.log("added email", email, "password", password);
+    res.redirect("/signin");
+  });
+};
+
+exports.handle_signin = (req, res) => {
+  res.render("goals", { title: "New goal", user: "user" });
+};
+
+exports.logout = (req, res) => {
+  res.clearCookie("jwt").status(200).redirect("/");
+};
 exports.about_page = (req, res) => {
   res.status(200);
   res.redirect("html/about.html");

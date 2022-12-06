@@ -1,10 +1,13 @@
 const express = require("express");
 const mustache = require("mustache-express");
+require("dotenv").config(); // loads .env data
+const cookieParser = require("cookie-parser");
+
 const path = require("path");
 
 const app = express();
 const port = 3000;
-
+app.use(cookieParser());
 const public = path.join(__dirname, "public");
 app.use(express.static(public));
 app.use(express.urlencoded({ extended: false }));
