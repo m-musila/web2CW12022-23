@@ -5,14 +5,14 @@ const { resolve } = require("path");
 // Data model class to implement functionality for data processing.
 class Wellness {
   // Instantiate the constructor
-  // If the database path is not provided it defaults to in memory database else embedded
+  // If the database path is not provided it defaults to in-memory database else embedded
   constructor(dbPath) {
     // Ternary operator
     dbPath
       ? (this.db = new nedb({ filename: dbPath, autoload: true }))
       : (this.db = new nedb());
   }
-  // Arrow function are used to reduces code, make the code more readable and to auto bind 'this' to surrounding code context.
+  // Arrow function are used to reduces code, make the code more readable and to auto bind 'this.' to surrounding code context.
   // Add a goal
   addGoal = (date, category, goal) => {
     // An array for looking up days of the week
@@ -29,6 +29,7 @@ class Wellness {
     let goals = {
       // time calculation for sorting goals in order of day of the week.
       time: d.getTime(),
+      // d.getDay returns a number btw 0 and 6 that correspond to the days of the week
       day: weekday[d.getDay()],
       date: date,
       category: category,
@@ -46,8 +47,7 @@ class Wellness {
 
   // Get the schedule.
   getSchedule = () => {
-    // A promise returned to make it easy to use the code in the controller using the '.then()' method.
-    // .then() is preferred to callback functions because it is easy to maintain
+    // A Promise is an object returns the success or failure of an asynchronous operation.
     return new Promise((resolve, reject) => {
       this.db.find({}, (err, schedule) => {
         if (err) {
@@ -80,6 +80,7 @@ class Wellness {
       this.db.update(
         { date: date, category: category },
         { $set: { goal: goal } },
+        //Include so that all documents that match the query criteria are updated.
         { multi: true },
         (err, numReplaced) => {
           if (err) {

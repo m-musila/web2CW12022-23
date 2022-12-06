@@ -3,8 +3,12 @@
     <head>
         {{>header}}
     </head>
-    <body class="m-5">
+    <body class="d-block">
+    {{>svgtemp}}
+    {{>navtemp}}
+    
     <main class="w-500 m-auto">
+  
       <h1 class="text-center p-4">Weekly Schedule</h1> 
       
       {{! Looping array of entries with key 'entries' }}
@@ -29,8 +33,12 @@
       <a href="/update" class="btn btn-warning float-start">Update Goal</a>
       <a href="/remove" class="btn btn-danger float-end">Remove Goal</a>
       </div>
-      </main> 
+    </main> 
       
-    </body>
+    
+    
+    {{>footer}}
+    
+  </body>
 </html>
 

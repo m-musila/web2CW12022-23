@@ -2,7 +2,9 @@
   <head>
   {{>header}}
   </head>
-  <body class="text-center"> 
+  <body class="text-center d-block"> 
+    {{>svgtemp}}
+    {{>navtemp}}
     <main class="form-signin w-100 m-auto border border-secondary border-2 rounded">
     <h1 class="pb-5">Add a Goal</h1>
      <form method="post" role="form">
@@ -29,12 +31,11 @@
     <textarea class="form-control" id="goal" name="goal" rows="2" required></textarea>
    
   </div>
-
   <!-- Submit button -->
   <button type="submit" value="Post goal" class="btn btn-primary btn-block mb-4">Create</button>
 </form> 
 </main>  
- 
+   {{>footer}}
   </body>
 </html>
 

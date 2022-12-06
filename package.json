@@ -1,7 +1,7 @@
 {
   "name": "cw1",
   "version": "1.0.0",
-  "description": "a web-based company wellness program for employees of Agb Ltd.",
+  "description": "A web-based company wellness program for employees of Agb Ltd.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

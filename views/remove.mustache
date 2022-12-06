@@ -2,8 +2,10 @@
   <head>
   {{>header}}
   </head>
-  <body class="text-center"> 
-    <main class="form-signin w-100 m-auto border border-secondary border-2 rounded">
+  <body class="text-center d-block"> 
+  {{>svgtemp}}
+    {{>navtemp}}
+<main class="form-signin w-100 m-auto border border-secondary border-2 rounded">
     <h1 class="pb-5">Remove a Goal</h1>
      <form method="post" role="form">
   <!-- Date input -->
@@ -24,8 +26,8 @@
   </div>
   <!-- Submit button -->
   <button type="submit" value="Post entry" class="btn btn-danger btn-block mb-4">Delete</button>
-</form> 
-    </main> 
-      
+ </form> 
+</main> 
+    {{>footer}}  
   </body>
 </html>

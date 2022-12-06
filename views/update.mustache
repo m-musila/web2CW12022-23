@@ -2,7 +2,9 @@
   <head>
   {{>header}}
   </head>
-  <body class="text-center"> 
+  <body class="text-center d-block"> 
+  {{>svgtemp}}
+    {{>navtemp}}
     <main class="form-signin w-100 m-auto border border-secondary border-2 rounded">
     <h1 class="pb-5">Update a Goal</h1>
      <form method="post" role="form">
@@ -34,6 +36,7 @@
   <button type="submit" value="Post entry" class="btn btn-warning btn-block mb-4">Update</button>
 </form> 
     </main> 
-      
+    
+    {{>footer}}
   </body>
 </html>

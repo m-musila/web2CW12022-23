@@ -1,3 +1,4 @@
+// Include module
 const express = require("express");
 // Create route object to handle requests
 const router = express.Router();
@@ -5,8 +6,9 @@ const router = express.Router();
 // Import callbacks from controller
 const controller = require("../controllers/controller");
 
-router.get("/", controller.sign_in);
-// router.post("/", controller.post_sign_up);
+router.get("/", controller.landing_page);
+router.get("/signin", controller.sign_in);
+// router.post("/signin", controller.post_sign_up);
 router.get("/signup", controller.sign_up);
 // router.post("/signup", controller.post_sign_up);
 router.get("/update", controller.update);

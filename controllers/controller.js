@@ -86,6 +86,10 @@ exports.about_page = (req, res) => {
   res.status(200);
   res.redirect("html/about.html");
 };
+exports.landing_page = (req, res) => {
+  res.status(200);
+  res.redirect("html/index.html");
+};
 // Not found page
 exports.notFound = (req, res) => {
   res.status(404);
